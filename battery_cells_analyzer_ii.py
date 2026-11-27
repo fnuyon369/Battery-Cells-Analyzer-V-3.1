@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Battery Cells Analyzer II - Developed by Triono
+Battery Cells Analyzer V3 - Developed by Triono
 Membaca file ageing battery pack (.CDS), memfilter kondisi UVP (SOC 0%) dan
 OVP (SOC 100%), lalu menampilkan diagram batang tegangan 23 cell.
 
@@ -38,7 +38,7 @@ from datetime import datetime, timedelta
 from statistics import mean, median
 
 N_CELLS = 23
-APP_TITLE = "Battery Cells Analyzer II- Developed by Triono"
+APP_TITLE = "Battery Cells Analyzer V3- Developed by Triono"
 # Tema futuristik (gelap + neon)
 BG, PANEL, PANEL2, BORDER = "#0a0f1e", "#111a30", "#17223d", "#26365e"
 FG, MUTED, ACC = "#d8e6ff", "#7f92b8", "#00e5ff"
@@ -1350,19 +1350,5 @@ def run_gui():
 
 if __name__ == "__main__":
     run_gui()
-
-
-
-
-import tkinter as tk
-
-jendela = tk.Tk()
-jendela.title("Aplikasi Pertama")
-jendela.geometry("300x150")
-
-label = tk.Label(jendela, text="Halo, ini tampilan UI!")
-label.pack(pady=40)
-
-jendela.mainloop()
 
     
