@@ -1,19 +1,30 @@
-name: Build exe
+name: Build BatteryCellsAnalyzerV3.exe
+
 on:
-  workflow_dispatch:
+  workflow_dispatch:        # tombol "Run workflow" manual
   push:
-    branches: [main]
+    branches: [ main, master ]
+
 jobs:
   build:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: pip install matplotlib numpy pyinstaller
-      - run: pyinstaller --noconsole --onefile --name BatteryCellsAnalyzerV3 --icon icon.ico --add-data "icon.ico;." app.py
-      - uses: actions/upload-artifact@v4
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt pyinstaller
+
+      - name: Build portable exe
+        run: pyinstaller --noconsole --onefile --name BatteryCellsAnalyzerV3 battery_cells_analyzer_ii.py
+
+      - name: Upload exe
+        uses: actions/upload-artifact@v4
         with:
           name: BatteryCellsAnalyzerV3-windows
           path: dist/BatteryCellsAnalyzerV3.exe
